@@ -1,0 +1,71 @@
+<h1>registro</h1>
+
+@if(formulario !== undefined)
+{
+    <form [formGroup]="this.formulario">
+        <!-- Nombre -->
+        <div>
+            <input type="text" formControlName="nombre" placeholder="Nombre"/>
+
+            @if(nombre?.errors !== null && nombre?.touched)
+            { 
+                @if(nombre?.hasError("required"))
+                {
+                    <p>El nombre es requerido</p>
+                } 
+                @if (nombre?.hasError("minlength"))
+                {
+                    <p>El nombre requiere 3 caracteres</p>
+                } 
+                @if (nombre?.hasError("maxlength"))
+                {
+                    <p>El nombre requiere maximo 15 caracteres</p>
+                } 
+            }
+        </div>
+
+        <!-- Apellido -->
+        <div>
+            <input type="text" formControlName="apellido" placeholder="Apellido"/>
+
+            @if(apellido?.errors !== null && apellido?.touched) 
+            { 
+                @if(apellido?.hasError("required"))
+                {
+                    <p>El apellido es requerido</p>
+                } 
+                @if (apellido?.hasError("minlength"))
+                {
+                    <p>El apellido requiere 3 caracteres</p>
+                } 
+                @if (apellido?.hasError("maxlength"))
+                {
+                    <p>El apellido requiere maximo 15 caracteres</p>
+                }
+            }
+        </div>
+
+        <!-- Edad -->
+        <div>
+            <input type="number" formControlName="edad" placeholder="Edad" step="1"/>
+
+            @if(edad?.errors !== null && edad?.touched) 
+            {
+                @if(edad?.hasError("required"))
+                {
+                    <p>La edad es requerida</p>
+                }
+                @if (edad?.hasError("min"))
+                {
+                    <p>La edad minima es 1 anio</p>
+                }
+                @if (edad?.hasError("max"))
+                {
+                    <p>La edad maximo es 115 anios</p>
+                }
+            }
+        </div>
+
+        <button (click)="guardarDatos()" [disabled]="!this.formulario.valid" class="btn btn-primary">Guardar</button>
+    </form>
+}
