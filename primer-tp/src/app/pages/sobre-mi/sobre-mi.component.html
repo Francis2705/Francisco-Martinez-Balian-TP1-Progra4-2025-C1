@@ -4,9 +4,9 @@
 
 <button (click)="traerUsuario()">Traer</button>
 
-@if(this.apiGithub.usuGithub)
+@if(this.apiGithub.usuGithub())
 {
-    <p>{{this.apiGithub.usuGithub.id}}</p>
-    <p>{{this.apiGithub.usuGithub.login}}</p>
-    <img [src]="this.apiGithub.usuGithub.avatar_url" width="200px" height="200px"/>
+    <p>{{this.apiGithub.usuGithub().id}}</p>
+    <p>{{this.apiGithub.usuGithub().login}}</p>
+    <img [src]="this.apiGithub.usuGithub().avatar_url" width="200px" height="200px"/>
 }

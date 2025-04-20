@@ -18,10 +18,5 @@ export class SobreMiComponent
   {
     this.apiGithub.traerPorNombre(this.nombreUsuario);
     this.nombreUsuario = "";
-
-    setTimeout(() => {
-      console.log(this.apiGithub.usuGithub);
-      this.cdr.detectChanges(); //esto le avisa a angular que tiene que actualizar el html
-    }, 800); //tiempo de espera para que llegue la info y se muestre bien
   }
 }
