@@ -12,11 +12,12 @@ export class SobreMiComponent
 {
   apiGithub = inject(GithubService);
   cdr = inject(ChangeDetectorRef);
-  nombreUsuario: string = "";
+  // nombreUsuario: string = "";
+  nombreUsuario: string = "Francis2705";
 
   traerUsuario()
   {
     this.apiGithub.traerPorNombre(this.nombreUsuario);
-    this.nombreUsuario = "";
+    // this.nombreUsuario = "";
   }
 }

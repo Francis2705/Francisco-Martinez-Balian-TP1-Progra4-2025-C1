@@ -25,4 +25,12 @@ export class DbService
     console.log(data);
     console.log(error);
   }
+
+  async obtenerUsuarios()
+  {
+    const { data, error } = await this.tablaUsuarios.select("*");
+    console.log(data);
+    console.log(error);
+    return data;
+  }
 }

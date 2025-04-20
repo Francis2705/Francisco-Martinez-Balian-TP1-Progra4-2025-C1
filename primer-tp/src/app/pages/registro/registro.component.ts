@@ -14,6 +14,7 @@ export class RegistroComponent implements OnInit
   formulario?: FormGroup;
   usuario?: Usuario; //no lo creo ahora, porque sino siempre que entre al registro se va a estar creando un usuario
   auth = inject(DbService);
+  registroExitoso: boolean = false;
 
   ngOnInit()
   {
@@ -33,6 +34,8 @@ export class RegistroComponent implements OnInit
     }
     this.usuario = new Usuario(this.nombre?.value, this.apellido?.value, this.edad?.value);
     this.auth.insertarUsuario(this.usuario);
+    this.registroExitoso = true;
+    this.formulario.reset();
   }
 
   get nombre()
