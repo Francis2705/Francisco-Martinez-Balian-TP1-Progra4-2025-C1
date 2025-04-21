@@ -17,7 +17,7 @@ export class GithubService
     const suscripcion: Subscription = peticion.subscribe((respuesta) => { //suscribirse y definir accion al recibir respuesta
       this.usuGithub.set(respuesta); //seteo la respuesta en la variable usuGithub (la cual es un signal) 
       suscripcion.unsubscribe(); //me desuscribo para no seguir escuchando el evento
-      console.log(this.usuGithub);
+      console.log(this.usuGithub());
     });
   }
 }
