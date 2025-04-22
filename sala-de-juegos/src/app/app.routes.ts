@@ -8,5 +8,6 @@ export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "registro", component: RegistroComponent},
     {path: "bienvenida", component: BienvenidaComponent},
-    {path: "quien-soy", component: QuienSoyComponent}
+    {path: "quien-soy", component: QuienSoyComponent},
+    {path: "", redirectTo: "bienvenida", pathMatch: "full"},
 ];
