@@ -1,0 +1,12 @@
+.mayor-menor-container
+{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card
+{
+  border-radius: 1rem;
+}
+button
+{
+  min-width: 100px;
+}

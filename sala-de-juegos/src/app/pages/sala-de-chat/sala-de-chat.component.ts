@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './sala-de-chat.component.html',
   styleUrl: './sala-de-chat.component.css'
 })
-export class SalaDeChatComponent {
-
+export class SalaDeChatComponent
+{
+  
 }

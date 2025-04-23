@@ -1,1 +1,23 @@
-<p>mayor-o-menor works!</p>
+<div class="mayor-menor-container bg-dark text-light d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg border border-info-subtle text-center" style="background-color: #1b2838; width: 100%; max-width: 600px;">
+        <h2 class="text-info mb-3">Mayor o Menor</h2>
+
+        <div class="mb-4">
+        <!-- Temporizador centrado -->
+            <div class="timer-container d-flex justify-content-center mb-3">
+                <div class="timer text-info steam-font fs-5">⏱️ Tiempo: {{ tiempoFormateado }}</div>
+            </div>
+        <img *ngIf="cartaActual" [src]="cartaActual.imagen" alt="Carta actual" class="img-fluid" style="max-height: 200px;">
+        </div>
+
+        <div class="mb-3" *ngIf="!juegoFinalizado">
+            <button class="btn btn-success me-2" (click)="elegir('mayor')">Mayor</button>
+            <button class="btn btn-danger" (click)="elegir('menor')">Menor</button>
+        </div>
+
+        <div *ngIf="juegoFinalizado" class="mt-3">
+            <p [ngClass]="{ 'text-success': gano, 'text-danger': !gano }" class="fs-5">{{ gano ? '¡Ganaste! 🎉' : 'Perdiste 😢' }}</p>
+            <p class="text-light">Aciertos: {{ aciertos }}</p>
+        </div>
+    </div>
+</div>

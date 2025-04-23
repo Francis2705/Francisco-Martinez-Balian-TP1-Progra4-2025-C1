@@ -120,7 +120,7 @@ export class AhorcadoComponent implements OnInit
     this.intervalo = setInterval(() => {
       this.tiempoTranscurrido = Math.floor((Date.now() - this.tiempoInicio) / 1000);
       this.tiempoFormateado = this.formatearTiempo(this.tiempoTranscurrido);
-      this.cdr.detectChanges(); // 👈 Forzamos la actualización
+      this.cdr.detectChanges();
     }, 1000);
   }
 
