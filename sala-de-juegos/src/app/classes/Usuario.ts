@@ -15,6 +15,6 @@ export class Usuario
     }
     mostrarDatos()
     {
-        console.log(this.uid, this.correo, this.nombre, this.apellido, this.edad);
+        return `${this.uid, this.correo, this.nombre, this.apellido, this.edad}`;
     }
 }

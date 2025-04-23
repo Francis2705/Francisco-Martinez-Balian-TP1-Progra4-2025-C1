@@ -12,7 +12,7 @@ export class AuthService
   user = signal<User | null>(null);
   router = inject(Router);
 
-  constructor()
+  constructor() //ver lo de q se ejecuta muchas veces el sesion activa
   {
     this.supabase.auth.onAuthStateChange((event, session) => {
       // console.log(`Auth state change: ${event}`, session);
@@ -20,15 +20,13 @@ export class AuthService
       {
         console.log("No hay sesión activa");
         this.user.set(null);
-        // this.router.navigateByUrl('/login'); //sino hay sesion activa, redirige a login
         return;
       }
       else
       {
         this.supabase.auth.getUser().then(({data, error}) => {
-          console.log("Sesión activa", data); //se ejecuta dos veces cuando la sesion esta activa
+          console.log("Sesión activa", data); //se ejecuta n veces cuando la sesion esta activa
           this.user.set(data.user);
-          // this.router.navigateByUrl('/'); //si hay sesion activa, redirige a home (si quiero acceder a home sin sesion activa, redirige a login)
         });
       }
     });
@@ -40,6 +38,10 @@ export class AuthService
       email: email,
       password: password
     });
+    if (error?.name === 'AuthApiError')
+    {
+      return -1;
+    }
     return data.user?.id;
   }
 
@@ -63,9 +65,13 @@ export class AuthService
     //si el correo existe, intentar iniciar sesión
     const { data, error } = await this.supabase.auth.signInWithPassword({email: email, password: password});
 
-    if (error)
+    if (error?.message === 'Email not confirmed')
     {
-      return "Error al iniciar sesión, clave incorrecta" ;
+      return "Error, tiene que confirmar su mail!";
+    }
+    else if(error?.message === 'Invalid login credentials')
+    {
+      return "Error, contraseña incorrecta";
     }
 
     return "Sesión iniciada correctamente.";

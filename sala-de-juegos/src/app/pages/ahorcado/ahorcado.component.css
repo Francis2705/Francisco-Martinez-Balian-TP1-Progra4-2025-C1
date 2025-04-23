@@ -1,0 +1,54 @@
+.ahorcado-container
+{
+  font-family: 'Press Start 2P', cursive;
+}
+.letra-btn
+{
+  background-color: #2a475e;
+  color: #66c0f4;
+  border: 1px solid #66c0f4;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  border-radius: 8px;
+  min-width: 45px;
+}
+.letra-btn:hover:not(:disabled)
+{
+  background-color: #1b2838;
+  transform: scale(1.1);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+.letra-btn:disabled
+{
+  background-color: #444;
+  color: #888;
+  cursor: not-allowed;
+}
+.letras-grid
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  gap: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.ahorcado-img
+{
+  border-radius: 12px;
+  background-color: #0e151c;
+  border: 2px solid #66c0f4;
+  width: 220px;
+}
+.timer
+{
+  background-color: #101820;
+  padding: 10px 20px;
+  border: 2px solid #66c0f4;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(102, 192, 244, 0.3);
+  font-family: 'Press Start 2P', monospace;
+}

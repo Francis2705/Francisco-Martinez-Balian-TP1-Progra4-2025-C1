@@ -1,0 +1,56 @@
+.steam-btn
+{
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.steam-btn:hover
+{
+  background-color: #17a2b8 !important;
+  transform: scale(1.05);
+}
+
+.text-grow
+{
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.1rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.pixel-title
+{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.steam-title
+{
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(23, 162, 184, 0.5);
+}
+.game-card
+{
+  background-color: #1b2838;
+  border: 1px solid #17a2b8;
+  border-radius: 1rem;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(23, 162, 184, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.game-card:hover
+{
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(23, 162, 184, 0.5);
+}
+.icono-juego
+{
+  font-size: 2.5rem;
+  color: #17a2b8;
+}
+.steam-btn.btn-danger:hover
+{
+  background-color: #7b1f1f !important;
+  border-color: #7b1f1f !important;
+}

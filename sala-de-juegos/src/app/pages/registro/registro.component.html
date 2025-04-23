@@ -82,14 +82,9 @@
     {
       <p class="text-danger text-center mt-3 small">¡Error, mail ya registrado!</p>
     }
-    <button (click)="probarLogin()">iniciar sesion</button>
-    @if (mensajeLogin())
+    @else if(registro() === 'Error, mail inexistente!')
     {
-      <p *ngIf="mensajeLogin" class="text-warning mt-2 text-center">{{ mensajeLogin() }}</p>
+      <p class="text-danger text-center mt-3 small">¡Error, mail inexistente!</p>
     }
-
-    <button (click)="this.auth.cerrarSesion()">cerrar sesion</button>
-    <button type="button" class="btn btn-outline-light mb-3 w-100" (click)="completarFormulario()">Autocompletar</button>
-
   </div>
 </div>

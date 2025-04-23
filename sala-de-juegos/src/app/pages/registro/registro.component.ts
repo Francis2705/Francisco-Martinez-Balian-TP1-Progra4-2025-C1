@@ -7,7 +7,7 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
-  imports: [FormsModule, ReactiveFormsModule, NgIf],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -17,9 +17,22 @@ export class RegistroComponent implements OnInit
   usuario?: Usuario;
   auth = inject(AuthService);
   db = inject(DatabaseService);
-  registro= signal<any | null>(null);
+  registro = signal<any | null>(null);
   mensajeLogin = signal<any | null>(null);
 
+  // constructor() //hace que no pueda acceder si ya esta logueado
+  // {
+  //   this.auth.supabase.auth.onAuthStateChange((event, session) => {
+  //     if (session !== null)
+  //     {
+  //       this.auth.supabase.auth.getUser().then(({data, error}) => {
+  //         console.log("Sesión activa", data); //se ejecuta dos veces cuando la sesion esta activa
+  //         this.auth.user.set(data.user);
+  //         this.auth.router.navigateByUrl('/'); //si hay sesion activa, redirige a home
+  //       }); 
+  //     }
+  //   });
+  // }
   ngOnInit()
   {
     this.formulario = new FormGroup({
@@ -48,21 +61,17 @@ export class RegistroComponent implements OnInit
       {
         //sino existe, creo la cuenta
         let uid = await this.auth.crearCuenta(this.correo?.value, this.clave?.value);
+        if (uid === -1)
+        {
+          return this.registro.set('Error, mail inexistente!');
+        }
         this.usuario = new Usuario(this.correo?.value, this.nombre?.value, this.apellido?.value, this.edad?.value, uid);
         this.db.insertarUsuario(this.usuario);
-        this.formulario.reset();
-        return this.registro.set('registro exitoso');
+        this.registro.set('registro exitoso');
+        setTimeout(() => {this.auth.router.navigateByUrl('/login');}, 2000); //espero 2 segundos para que se vea el mensaje
+        return;
       }
     }
-  }
-  async probarLogin()
-  {
-    const resultado = await this.auth.iniciarSesion('franciscomartinezbalian@gmail.com', 'hola1234');
-    this.mensajeLogin.set(resultado);
-  }
-  completarFormulario()
-  {
-    this.formulario?.setValue({correo: 'franciscomartinezbalian@gmail.com', nombre: 'aaa', apellido: 'bbb', edad: 20, clave: 'hola1234'});
   }
 
   get correo() {return this.formulario?.get('correo');}
