@@ -1,4 +1,4 @@
-<div class="registro-container d-flex justify-content-center align-items-center vh-100 w-100 bg-dark">
+<div class="registro-container d-flex flex-column justify-content-center align-items-center vh-100 w-100 bg-dark">
   <div class="card p-4 shadow-lg border border-secondary bg-secondary border border-info-subtle text-light" style="min-width: 320px; max-width: 500px;width: 100%; background-color: #1b2838 !important">
     <h2 class="text-center text-info mb-4">Registro</h2>
     @if(formulario !== undefined)
@@ -87,4 +87,6 @@
       <p class="text-danger text-center mt-3 small">¡Error, mail inexistente!</p>
     }
   </div>
+  <br>
+  <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
 </div>

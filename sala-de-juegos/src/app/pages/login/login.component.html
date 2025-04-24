@@ -1,41 +1,43 @@
-<div class="registro-container d-flex justify-content-center align-items-center vh-100 w-100 bg-dark">
-    <div class="card p-4 shadow-lg border border-secondary bg-secondary border border-info-subtle text-light" style="min-width: 320px; max-width: 500px;width: 100%; background-color: #1b2838 !important">
-      <h2 class="text-center text-info mb-4">Login</h2>
-      @if(formulario !== undefined)
-      {
-        <form [formGroup]="this.formulario">
-          <!-- Correo -->
-          <div class="mb-3">
-            <input type="email" formControlName="correo" class="form-control" placeholder="Correo electrónico" />
-            @if(correo?.errors !== null && correo?.touched)
-            {
-              <div class="text-danger small mt-1">
-                @if(correo?.hasError("required")) { <p class="mb-1">El correo es requerido</p> }
-                @if(correo?.hasError("email")) { <p class="mb-1">Formato de correo inválido</p> }
-              </div>
-            }
-          </div>
-          <!-- Clave -->
-          <div class="mb-4">
-            <input type="password" formControlName="clave" class="form-control" placeholder="Contraseña" />
-            @if(clave?.errors !== null && clave?.touched)
-            {
-              <div class="text-danger small mt-1">
-                @if(clave?.hasError("required")) { <p class="mb-1">La clave es requerida</p> }
-                @if(clave?.hasError("minlength")) { <p class="mb-1">Mínimo 6 caracteres</p> }
-              </div>
-            }
-          </div>
-          <button (click)="login()" [disabled]="!formulario.valid" class="btn btn-info w-100">Inicar sesión</button>
-          @if (mensajeLogin() != 'Sesión iniciada correctamente.')
+<div class="registro-container d-flex flex-column justify-content-center align-items-center vh-100 w-100 bg-dark">
+  <div class="card p-4 shadow-lg border border-secondary bg-secondary border border-info-subtle text-light" style="min-width: 320px; max-width: 500px;width: 100%; background-color: #1b2838 !important">
+    <h2 class="text-center text-info mb-4">Login</h2>
+    @if(formulario !== undefined)
+    {
+      <form [formGroup]="this.formulario">
+        <!-- Correo -->
+        <div class="mb-3">
+          <input type="email" formControlName="correo" class="form-control" placeholder="Correo electrónico" />
+          @if(correo?.errors !== null && correo?.touched)
           {
-            <p *ngIf="mensajeLogin" class="text-danger mt-2 text-center">{{ mensajeLogin() }}</p>
+            <div class="text-danger small mt-1">
+              @if(correo?.hasError("required")) { <p class="mb-1">El correo es requerido</p> }
+              @if(correo?.hasError("email")) { <p class="mb-1">Formato de correo inválido</p> }
+            </div>
           }
-          @else
+        </div>
+        <!-- Clave -->
+        <div class="mb-4">
+          <input type="password" formControlName="clave" class="form-control" placeholder="Contraseña" />
+          @if(clave?.errors !== null && clave?.touched)
           {
-            <p *ngIf="mensajeLogin" class="text-success mt-2 text-center">{{ mensajeLogin() }}</p>
+            <div class="text-danger small mt-1">
+              @if(clave?.hasError("required")) { <p class="mb-1">La clave es requerida</p> }
+              @if(clave?.hasError("minlength")) { <p class="mb-1">Mínimo 6 caracteres</p> }
+            </div>
           }
-        </form>
-      }
-    </div>
+        </div>
+        <button (click)="login()" [disabled]="!formulario.valid" class="btn btn-info w-100">Inicar sesión</button>
+        @if (mensajeLogin() != 'Sesión iniciada correctamente.')
+        {
+          <p *ngIf="mensajeLogin" class="text-danger mt-2 text-center">{{ mensajeLogin() }}</p>
+        }
+        @else
+        {
+          <p *ngIf="mensajeLogin" class="text-success mt-2 text-center">{{ mensajeLogin() }}</p>
+        }
+      </form>
+    }
   </div>
+  <br>
+  <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+</div>

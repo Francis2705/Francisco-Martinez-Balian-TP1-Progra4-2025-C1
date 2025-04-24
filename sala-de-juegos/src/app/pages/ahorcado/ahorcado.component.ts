@@ -2,10 +2,11 @@ import { Component, OnInit, effect, inject, signal, ChangeDetectorRef } from '@a
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ahorcado',
-  imports: [NgFor, NgIf, NgClass],
+  imports: [NgFor, NgIf, NgClass, RouterLink],
   templateUrl: './ahorcado.component.html',
   styleUrls: ['./ahorcado.component.css']
 })

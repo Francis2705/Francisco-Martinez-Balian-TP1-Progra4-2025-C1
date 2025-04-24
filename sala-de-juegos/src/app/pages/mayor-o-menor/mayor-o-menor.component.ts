@@ -3,13 +3,14 @@ import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { NgClass, NgIf } from '@angular/common';
 import { Carta } from '../../classes/Carta';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mayor-o-menor',
   templateUrl: './mayor-o-menor.component.html',
   styleUrls: ['./mayor-o-menor.component.css'],
   standalone: true,
-  imports: [NgClass, NgIf]
+  imports: [NgClass, NgIf, RouterLink]
 })
 
 export class MayorOMenorComponent implements OnInit

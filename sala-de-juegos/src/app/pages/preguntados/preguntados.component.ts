@@ -3,11 +3,12 @@ import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { NgIf, NgFor, NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-preguntados',
   standalone: true,
-  imports: [NgIf, NgFor, NgClass],
+  imports: [NgIf, NgFor, NgClass, RouterLink],
   templateUrl: './preguntados.component.html',
   styleUrls: ['./preguntados.component.css']
 })
