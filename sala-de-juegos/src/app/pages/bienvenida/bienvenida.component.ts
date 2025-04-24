@@ -22,7 +22,7 @@ export class BienvenidaComponent implements OnInit
     { nombre: 'Mayor o Menor', icono: 'fas fa-sort-numeric-up-alt', ruta: '/mayor-o-menor' },
     { nombre: 'Sala de Chat', icono: 'fas fa-comments', ruta: '/sala-de-chat' },
     { nombre: 'Preguntados', icono: 'fas fa-question', ruta: '/preguntados' },
-    { nombre: 'Trivia de Banderas', icono: 'fas fa-flag', ruta: '/juego-propio' },
+    { nombre: 'Dados Locos', icono: 'fas fa-dice', ruta: '/juego-propio' },
   ];
 
   async ngOnInit() //tambien se ejectua n veces como pasa en auth service

@@ -1,1 +1,17 @@
-<p>juego-propio works!</p>
+<div class="steam-card p-4 text-light text-center shadow-lg d-flex flex-column justify-content-center align-items-center vh-100 bg-dark">
+    <h2 class="mb-4 steam-font display-6 text-info">¡Bienvenido a <span class="text-grow">Dados Locos!</span> 🎲</h2>
+    <div class="timer-container d-flex justify-content-center mb-3">
+        <div class="timer text-info steam-font fs-5">⏱️ Tiempo: {{ tiempoFormateado }}</div>
+    </div>
+    <div class="d-flex justify-content-center gap-4 mb-4">
+        <img [src]="getRutaDado(dado1)" [class.shake]="lanzando" alt="Dado 1" class="dice-img"/>
+        <img [src]="getRutaDado(dado2)" [class.shake]="lanzando" alt="Dado 2" class="dice-img"/>
+    </div>
+    <button class="btn btn-outline-light px-4 py-2 fs-5 rounded-3 steam-font mb-4" (click)="tirarDados()" [disabled]="lanzando">
+        🎲 ¡Tirar Dados!
+    </button>
+    <p class="mt-4 fs-4 steam-font">{{ resultado }}</p>
+    <div class="mt-5">
+        <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+    </div>
+</div>
