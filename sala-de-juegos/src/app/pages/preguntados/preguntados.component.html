@@ -1,34 +1,22 @@
 <div class="container-fluid bg-dark text-light d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg p-4 border border-info-subtle" style="background-color: #1b2838; max-width: 700px; width: 100%;">
-      <h2 class="text-info text-center mb-4">Trivia Game</h2>
-      <!-- Temporizador centrado -->
+        <h2 class="text-info text-center mb-4">Trivia Game</h2>
         <div class="timer-container d-flex justify-content-center mb-3">
             <div class="timer text-info steam-font fs-5">⏱️ Tiempo: {{ tiempoFormateado }}</div>
         </div>
-  
-      <div *ngIf="!juegoFinalizado && preguntas.length > 0" >
-        <p class="fs-5 steam-font text-light mb-4 d-flex justify-content-center align-items-center text-center">
-            {{ preguntas[indice].question }}
-        </p>
-  
-        <div class="d-grid gap-2">
-          <button 
-            *ngFor="let r of preguntas[indice].respuestas"
-            class="btn btn-outline-light"
-            (click)="responder(r)">
-            {{ r }}
-          </button>
+
+        <div *ngIf="!juegoFinalizado && preguntas.length > 0" >
+            <p class="fs-5 steam-font text-light mb-4 d-flex justify-content-center align-items-center text-center">
+                {{ preguntas[indice].question }}
+            </p>
+            <div class="d-grid gap-2">
+                <button *ngFor="let r of preguntas[indice].respuestas" class="btn btn-outline-light" (click)="responder(r)">{{ r }}</button>
+            </div>
+            <p class="mt-3 text-muted text-center">Correct answers: {{ aciertos }} / 6</p>
         </div>
-  
-        <p class="mt-3 text-muted text-center">Correct answers: {{ aciertos }} / 6</p>
-      </div>
-  
-      <div *ngIf="juegoFinalizado" class="text-center">
-        <p class="fs-4" [ngClass]="{ 'text-success': gano, 'text-danger': !gano }">
-          {{ gano ? 'You win! 🎉' : 'You lose 😢' }}
-        </p>
-        <p class="text-light">Correct answers: {{ aciertos }}</p>
-      </div>
+        <div *ngIf="juegoFinalizado" class="text-center">
+            <p class="fs-4" [ngClass]="{ 'text-success': gano, 'text-danger': !gano }">{{ gano ? 'You win! 🎉' : 'You lose 😢' }}</p>
+            <p class="text-light">Correct answers: {{ aciertos }}</p>
+        </div>
     </div>
-  </div>
-  
+</div>
