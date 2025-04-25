@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, effect } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Usuario } from '../../classes/Usuario';
@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
   templateUrl: './bienvenida.component.html',
   styleUrl: './bienvenida.component.css'
 })
-export class BienvenidaComponent implements OnInit
+export class BienvenidaComponent
 {
   auth = inject(AuthService);
   db = inject(DatabaseService);
@@ -25,37 +25,30 @@ export class BienvenidaComponent implements OnInit
     { nombre: 'Dados Locos', icono: 'fas fa-dice', ruta: '/juego-propio' },
   ];
 
-  async ngOnInit() //tambien se ejectua n veces como pasa en auth service lo de usuario cargado
+  constructor()
   {
-    // this.auth.supabase.auth.onAuthStateChange(async (event, session) =>
-    // {
-    //   if (session !== null)
-    //   {
-    //     this.auth.supabase.auth.getUser().then(async ({data, error}) => {
-    //       this.auth.user.set(data.user);
-    //       if (data?.user)
-    //       {
-    //         const { data: usuarios, error: errorUsuario } = await this.auth.supabase.from("Usuarios").select("*").eq("uid", data.user.id).single();
-    //         if (errorUsuario)
-    //         {
-    //           console.error("Error al traer usuario:", errorUsuario.message);
-    //           this.usuario = null;
-    //         }
-    //         else
-    //         {
-    //           this.usuario = usuarios;
-    //           this.nombreUsuario.set(this.usuario?.nombre);
-    //           console.log("Usuario cargado:", this.usuario);
-    //         }
-    //       }
-    //     });
-    //   }
-    //   else
-    //   {
-    //     this.usuario = null;
-    //     console.log('no hay sesion iniciada');
-    //   }
-    // });
+    effect(() => { //sin el effect, this.auth.user() me trae null
+      if (this.auth.user())
+      {
+        console.log("Usuario cargado:", this.auth.user());
+        this.setearUsuario(this.auth.user()?.id);
+      }
+    });
+  }
+
+  async setearUsuario(userId: string | undefined)
+  {
+    const { data, error } = await this.db.supabase.from("Usuarios").select("*").eq("uid", userId).single();
+
+    if (data)
+    {
+      this.usuario = data;
+      this.nombreUsuario.set(this.usuario?.nombre);
+    }
+    else
+    {
+      console.error("Error al obtener nombre:", error);
+    }
   }
 
   navegar(ruta: string)

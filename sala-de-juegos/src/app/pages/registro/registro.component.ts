@@ -21,19 +21,6 @@ export class RegistroComponent implements OnInit
   registro = signal<any | null>(null);
   mensajeLogin = signal<any | null>(null);
 
-  // constructor() //hace que no pueda acceder si ya esta logueado
-  // {
-  //   this.auth.supabase.auth.onAuthStateChange((event, session) => {
-  //     if (session !== null)
-  //     {
-  //       this.auth.supabase.auth.getUser().then(({data, error}) => {
-  //         console.log("Sesión activa", data); //se ejecuta dos veces cuando la sesion esta activa
-  //         this.auth.user.set(data.user);
-  //         this.auth.router.navigateByUrl('/'); //si hay sesion activa, redirige a home
-  //       }); 
-  //     }
-  //   });
-  // }
   ngOnInit()
   {
     this.formulario = new FormGroup({
@@ -44,6 +31,7 @@ export class RegistroComponent implements OnInit
       clave: new FormControl('', {validators: [Validators.required, Validators.minLength(6)]})
     });
   }
+
   async guardarDatos()
   {
     if (!this.formulario?.valid)
@@ -69,7 +57,10 @@ export class RegistroComponent implements OnInit
         this.usuario = new Usuario(this.correo?.value, this.nombre?.value, this.apellido?.value, this.edad?.value, uid);
         this.db.insertarUsuario(this.usuario);
         this.registro.set('registro exitoso');
-        setTimeout(() => {this.auth.router.navigateByUrl('/login');}, 2000); //espero 2 segundos para que se vea el mensaje
+        this.auth.iniciarSesion(this.correo?.value, this.clave?.value);
+        setTimeout(() => {
+          this.auth.router.navigateByUrl('/bienvenida');
+        }, 2000); //espero 2 segundos para que se vea el mensaje
         return;
       }
     }

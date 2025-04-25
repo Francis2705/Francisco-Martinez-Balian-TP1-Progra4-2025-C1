@@ -1,4 +1,4 @@
-import { Injectable, signal, inject } from '@angular/core';
+import { Injectable, signal, inject, OnInit } from '@angular/core';
 import { User } from '@supabase/supabase-js';
 import { Router } from '@angular/router';
 import { SupabaseService } from './supabase.service';
@@ -12,10 +12,9 @@ export class AuthService
   user = signal<User | null>(null);
   router = inject(Router);
 
-  constructor() //ver lo de q se ejecuta muchas veces el sesion activa
+  constructor()
   {
     this.supabase.auth.onAuthStateChange((event, session) => {
-      // console.log(`Auth state change: ${event}`, session);
       if (session === null)
       {
         console.log("No hay sesión activa");
@@ -25,7 +24,7 @@ export class AuthService
       else
       {
         this.supabase.auth.getUser().then(({data, error}) => {
-          console.log("Sesión activa", data); //se ejecuta n veces cuando la sesion esta activa
+          console.log("Sesión activa", data);
           this.user.set(data.user);
         });
       }
@@ -65,11 +64,7 @@ export class AuthService
     //si el correo existe, intentar iniciar sesión
     const { data, error } = await this.supabase.auth.signInWithPassword({email: email, password: password});
 
-    if (error?.message === 'Email not confirmed')
-    {
-      return "Error, tiene que confirmar su mail!";
-    }
-    else if(error?.message === 'Invalid login credentials')
+    if(error?.message === 'Invalid login credentials')
     {
       return "Error, contraseña incorrecta";
     }
