@@ -25,37 +25,37 @@ export class BienvenidaComponent implements OnInit
     { nombre: 'Dados Locos', icono: 'fas fa-dice', ruta: '/juego-propio' },
   ];
 
-  async ngOnInit() //tambien se ejectua n veces como pasa en auth service
+  async ngOnInit() //tambien se ejectua n veces como pasa en auth service lo de usuario cargado
   {
-    this.auth.supabase.auth.onAuthStateChange(async (event, session) =>
-    {
-      if (session !== null)
-      {
-        this.auth.supabase.auth.getUser().then(async ({data, error}) => {
-          this.auth.user.set(data.user);
-          if (data?.user)
-          {
-            const { data: usuarios, error: errorUsuario } = await this.auth.supabase.from("Usuarios").select("*").eq("uid", data.user.id).single();
-            if (errorUsuario)
-            {
-              console.error("Error al traer usuario:", errorUsuario.message);
-              this.usuario = null;
-            }
-            else
-            {
-              this.usuario = usuarios;
-              this.nombreUsuario.set(this.usuario?.nombre);
-              console.log("Usuario cargado:", this.usuario);
-            }
-          }
-        });
-      }
-      else
-      {
-        this.usuario = null;
-        console.log('no hay sesion iniciada');
-      }
-    });
+    // this.auth.supabase.auth.onAuthStateChange(async (event, session) =>
+    // {
+    //   if (session !== null)
+    //   {
+    //     this.auth.supabase.auth.getUser().then(async ({data, error}) => {
+    //       this.auth.user.set(data.user);
+    //       if (data?.user)
+    //       {
+    //         const { data: usuarios, error: errorUsuario } = await this.auth.supabase.from("Usuarios").select("*").eq("uid", data.user.id).single();
+    //         if (errorUsuario)
+    //         {
+    //           console.error("Error al traer usuario:", errorUsuario.message);
+    //           this.usuario = null;
+    //         }
+    //         else
+    //         {
+    //           this.usuario = usuarios;
+    //           this.nombreUsuario.set(this.usuario?.nombre);
+    //           console.log("Usuario cargado:", this.usuario);
+    //         }
+    //       }
+    //     });
+    //   }
+    //   else
+    //   {
+    //     this.usuario = null;
+    //     console.log('no hay sesion iniciada');
+    //   }
+    // });
   }
 
   navegar(ruta: string)
