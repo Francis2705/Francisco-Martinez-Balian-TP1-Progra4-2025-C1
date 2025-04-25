@@ -8,7 +8,7 @@ import { Usuario } from '../../classes/Usuario';
 
 @Component({
   selector: 'app-sala-de-chat',
-  imports: [NgClass, NgFor, FormsModule],
+  imports: [NgClass, NgFor, FormsModule, RouterLink],
   templateUrl: './sala-de-chat.component.html',
   styleUrl: './sala-de-chat.component.css'
 })
@@ -16,7 +16,6 @@ export class SalaDeChatComponent
 {
   auth = inject(AuthService);
   db = inject(DatabaseService);
-  router = inject(Router);
   // cdr = inject(ChangeDetectorRef);
   // zone = inject(NgZone);
 
