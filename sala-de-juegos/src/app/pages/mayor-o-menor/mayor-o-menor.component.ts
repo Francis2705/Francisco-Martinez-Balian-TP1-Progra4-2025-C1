@@ -78,7 +78,7 @@ export class MayorOMenorComponent implements OnInit
     if (correcto)
     {
       this.aciertos++;
-      if (this.aciertos >= 5)
+      if (this.aciertos === 5)
       {
         this.finalizarJuego(true);
       } 

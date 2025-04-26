@@ -73,7 +73,7 @@ export class AhorcadoComponent implements OnInit
     {
       this.errores++;
       this.actualizarImagen();
-      if (this.errores >= this.maxErrores)
+      if (this.errores === this.maxErrores)
       {
         this.finalizarJuego(false);
       }

@@ -36,7 +36,7 @@ export class PreguntadosComponent implements OnInit
 
   cargarPreguntas(): void
   {
-    this.http.get<any[]>('https://the-trivia-api.com/api/questions?limit=20&difficulty=easy').subscribe(res => {
+    this.http.get<any[]>('https://the-trivia-api.com/api/questions?limit=5&difficulty=easy').subscribe(res => {
       this.preguntas = res.map(p => ({
         question: this.decodeHtml(p.question),
         correct_answer: this.decodeHtml(p.correctAnswer),
@@ -61,7 +61,7 @@ export class PreguntadosComponent implements OnInit
     if (opcion === actual.correct_answer)
     {
       this.aciertos++;
-      if (this.aciertos > 5)
+      if (this.aciertos === 5)
       {
         this.finalizarJuego(true);
       }

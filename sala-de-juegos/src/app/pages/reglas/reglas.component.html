@@ -1,1 +1,52 @@
-<p>reglas works!</p>
+<div class="contenedor-principal d-flex flex-column justify-content-center align-items-center bg-dark text-white p-4">
+    <h1 class="titulo text-center text-info mb-4">Reglas de los Juegos</h1>
+
+    <!-- Reglas de Ahorcado -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+      <h2 class="subtitulo text-info mb-3">Ahorcado</h2>
+      <p class="descripcion-reglas">
+        En el juego del Ahorcado, el objetivo es adivinar la palabra oculta. 
+        La palabra puede pertenecer a cualquier tema o categoría. Tienes un máximo de <strong>5 errores</strong> antes de perder el juego.
+      </p>
+      <p class="descripcion-reglas">
+        Cada vez que cometes un error, la imagen del ahorcado se va actualizando. ¡Intenta adivinar la palabra antes de quedarte sin intentos!
+      </p>
+    </section>
+
+    <!-- Reglas de Mayor o Menor -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+      <h2 class="subtitulo text-info mb-3">Mayor o Menor</h2>
+      <p class="descripcion-reglas">
+        En este juego, se muestra una carta de una baraja. Debes adivinar si la siguiente carta será <strong>mayor o menor</strong> que la que está visible en pantalla.
+      </p>
+      <p class="descripcion-reglas">
+        Si aciertas <strong>5 veces consecutivas</strong>, ganas el juego. Sin embargo, si cometes un error en cualquier momento, perderás.
+      </p>
+    </section>
+
+    <!-- Reglas de Preguntados -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+      <h2 class="subtitulo text-info mb-3">Preguntados</h2>
+      <p class="descripcion-reglas">
+        En Preguntados, se te presenta una pregunta con varias opciones. Debes seleccionar la opción correcta.
+      </p>
+      <p class="descripcion-reglas">
+        Si aciertas <strong>5 preguntas seguidas</strong>, ganarás. Si cometes un error en cualquiera de las preguntas, perderás el juego.
+      </p>
+    </section>
+
+    <!-- Reglas de Dados Locos -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+      <h2 class="subtitulo text-info mb-3">Dados Locos</h2>
+      <p class="descripcion-reglas">
+        En este juego, deberás tirar dos dados hasta que salga el resultado de <strong>dos seis</strong> para ganar.
+      </p>
+      <p class="descripcion-reglas">
+        Si en algún momento la suma de los dados es <strong>menor a 4</strong>, perderás. Si la suma es otra, ¡sigue tirando hasta lograr el objetivo!
+      </p>
+    </section>
+
+    <div class="d-flex justify-content-center my-4">
+      <button routerLink="/bienvenida" class="btn btn-steam">Volver</button>
+    </div>
+</div>
