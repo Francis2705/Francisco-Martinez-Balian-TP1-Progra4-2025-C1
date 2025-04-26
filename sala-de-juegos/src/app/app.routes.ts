@@ -10,6 +10,8 @@ import { JuegoPropioComponent } from './pages/juego-propio/juego-propio.componen
 import { PreguntadosComponent } from './pages/preguntados/preguntados.component';
 import { chequeoLoginGuard } from './guards/chequeo-login.guard';
 import { chequeoJuegosGuard } from './guards/chequeo-juegos.guard';
+import { ResultadosComponent } from './pages/resultados/resultados.component';
+import { ReglasComponent } from './pages/reglas/reglas.component';
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent, canActivate: [chequeoLoginGuard]},
@@ -21,5 +23,7 @@ export const routes: Routes = [
     {path: "sala-de-chat", component: SalaDeChatComponent, canActivate: [chequeoJuegosGuard]},
     {path: "juego-propio", component: JuegoPropioComponent, canActivate: [chequeoJuegosGuard]},
     {path: "preguntados", component: PreguntadosComponent, canActivate: [chequeoJuegosGuard]},
+    {path: "resultados", component: ResultadosComponent, canActivate: [chequeoJuegosGuard]},
+    {path: "reglas", component: ReglasComponent, canActivate: [chequeoJuegosGuard]},
     {path: "", redirectTo: "bienvenida", pathMatch: "full"},
 ];

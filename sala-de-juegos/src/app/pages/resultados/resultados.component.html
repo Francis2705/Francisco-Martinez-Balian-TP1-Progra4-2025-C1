@@ -1,0 +1,110 @@
+<div class="contenedor-principal">
+
+    <h1 class="titulo">Resultados de los Juegos</h1>
+  
+    <!-- Ahorcado -->
+    <section class="seccion-juego">
+      <h2 class="subtitulo">Ahorcado</h2>
+      <table class="tabla-resultados">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Fecha</th>
+            <th>Letras seleccionadas</th>
+            <th>Errores</th>
+            <th>Duración (segundos)</th>
+            <th>Ganó</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resultado of resultadosAhorcado()">
+            <td>{{ resultado.jugador }}</td>
+            <td>{{ resultado.fecha }}</td>
+            <td>{{ resultado.letras_seleccionadas}}</td>
+            <td>{{ resultado.errores}}</td>
+            <td>{{ resultado.duracion }}</td>
+            <td>{{ resultado.gano ? 'Sí' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Dados Locos -->
+    <section class="seccion-juego">
+      <h2 class="subtitulo">Dados Locos</h2>
+      <table class="tabla-resultados">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Fecha</th>
+            <th>Tiradas</th>
+            <th>Duración (segundos)</th>
+            <th>Ganó</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resultado of resultadosDadosLocos()">
+            <td>{{ resultado.jugador }}</td>
+            <td>{{ resultado.fecha }}</td>
+            <td>{{ resultado.tiradas }}</td>
+            <td>{{ resultado.duracion }}</td>
+            <td>{{ resultado.gano ? 'Sí' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Mayor o Menor -->
+    <section class="seccion-juego">
+      <h2 class="subtitulo">Mayor o Menor</h2>
+      <table class="tabla-resultados">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Fecha</th>
+            <th>Aciertos</th>
+            <th>Duración (segundos)</th>
+            <th>Ganó</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resultado of resultadosMayorMenor()">
+            <td>{{ resultado.jugador }}</td>
+            <td>{{ resultado.fecha }}</td>
+            <td>{{ resultado.aciertos }}</td>
+            <td>{{ resultado.duracion }}</td>
+            <td>{{ resultado.gano ? 'Sí' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Preguntados -->
+    <section class="seccion-juego">
+      <h2 class="subtitulo">Preguntados</h2>
+      <table class="tabla-resultados">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Fecha</th>
+            <th>Aciertos</th>
+            <th>Duración (segundos)</th>
+            <th>Ganó</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resultado of resultadosPreguntados()">
+            <td>{{ resultado.jugador }}</td>
+            <td>{{ resultado.fecha }}</td>
+            <td>{{ resultado.aciertos }}</td>
+            <td>{{ resultado.duracion }}</td>
+            <td>{{ resultado.gano ? 'Sí' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <div class="d-flex justify-content-center my-4">
+        <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+      </div>
+  </div>
+  

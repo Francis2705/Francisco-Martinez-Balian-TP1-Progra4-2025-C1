@@ -98,7 +98,7 @@ export class AhorcadoComponent implements OnInit
       fecha: new Date(),
       letras_seleccionadas: this.letrasSeleccionadas.length,
       errores: this.errores,
-      acierto: gano,
+      gano: gano,
       duracion: duracionSegundos
     };
 

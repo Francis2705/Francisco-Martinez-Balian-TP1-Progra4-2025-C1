@@ -38,9 +38,7 @@ export class DatabaseService
     return data as Usuario[];
   }
 
-
-
-
+//chat
 
   async obtenerMensajes()
   {
@@ -78,5 +76,18 @@ export class DatabaseService
         this.supabase.removeChannel(channel);
       };
     });
+  }
+
+  //Resultados
+  async obtenerResultados(tabla: string): Promise<any[]>
+  {
+    const {data, error} = await this.supabase.from(tabla).select("*").order('gano', {ascending: false}).order('duracion', {ascending: true});
+
+    if(error)
+    {
+      return [];
+    }
+
+    return data;
   }
 }

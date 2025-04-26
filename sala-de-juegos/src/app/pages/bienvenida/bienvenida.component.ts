@@ -23,6 +23,8 @@ export class BienvenidaComponent
     { nombre: 'Sala de Chat', icono: 'fas fa-comments', ruta: '/sala-de-chat' },
     { nombre: 'Preguntados', icono: 'fas fa-question', ruta: '/preguntados' },
     { nombre: 'Dados Locos', icono: 'fas fa-dice', ruta: '/juego-propio' },
+    { nombre: 'Resultados', icono: 'fas fa-trophy', ruta: '/resultados' },
+    { nombre: 'Reglas', icono: 'fas fa-scroll', ruta: '/reglas' }
   ];
 
   constructor()
