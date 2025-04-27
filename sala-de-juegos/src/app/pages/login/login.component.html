@@ -1,32 +1,38 @@
 <div class="registro-container d-flex flex-column justify-content-center align-items-center vh-100 w-100 bg-dark">
-  <div class="card p-4 shadow-lg border border-secondary bg-secondary border border-info-subtle text-light" style="min-width: 320px; max-width: 500px;width: 100%; background-color: #1b2838 !important">
+  <div class="card p-4 shadow-lg border border-secondary bg-secondary border-info-subtle text-light" style="min-width: 320px; max-width: 500px; width: 100%; background-color: #1b2838 !important">
     <h2 class="text-center text-info mb-4">Login</h2>
+
     @if(formulario !== undefined)
     {
-      <form [formGroup]="this.formulario">
-        <!-- Correo -->
-        <div class="mb-3">
+      <form [formGroup]="formulario">
+        <div class="mb-3"> <!-- Correo -->
           <input type="email" formControlName="correo" class="form-control" placeholder="Correo electrónico" />
           @if(correo?.errors !== null && correo?.touched)
           {
             <div class="text-danger small mt-1">
-              @if(correo?.hasError("required")) { <p class="mb-1">El correo es requerido</p> }
-              @if(correo?.hasError("email")) { <p class="mb-1">Formato de correo inválido</p> }
+              @if(correo?.hasError('required')) { <p class="mb-1">El correo es requerido</p> }
+              @if(correo?.hasError('email')) { <p class="mb-1">Formato de correo inválido</p> }
+              @if(correo?.hasError('maxlength')) { <p class="mb-1">Máximo 50 caracteres</p> }
             </div>
           }
         </div>
-        <!-- Clave -->
-        <div class="mb-4">
-          <input type="password" formControlName="clave" class="form-control" placeholder="Contraseña" />
+
+        <div class="mb-4 position-relative"> <!-- Clave con boton para ocultar -->
+          <input [type]="mostrarClave ? 'text' : 'password'" formControlName="clave" class="form-control" placeholder="Contraseña" />
+          <button type="button" (click)="verClave()" class="boton-clave">{{ mostrarClave ? '🙈' : '🙉' }}</button>
+
           @if(clave?.errors !== null && clave?.touched)
           {
             <div class="text-danger small mt-1">
-              @if(clave?.hasError("required")) { <p class="mb-1">La clave es requerida</p> }
-              @if(clave?.hasError("minlength")) { <p class="mb-1">Mínimo 6 caracteres</p> }
+              @if(clave?.hasError('required')) { <p class="error-clave">La clave es requerida</p> }
+              @if(clave?.hasError('minlength')) { <p class="error-clave">Mínimo 6 caracteres</p> }
+              @if(clave?.hasError('maxlength')) { <p class="error-clave">Máximo 20 caracteres</p> }
             </div>
           }
         </div>
-        <button (click)="login()" [disabled]="!formulario.valid" class="btn btn-info w-100">Inicar sesión</button>
+
+        <button (click)="login()" [disabled]="!formulario.valid" class="btn btn-info w-100 mb-3">Iniciar sesión</button>
+
         @if (mensajeLogin() != 'Sesión iniciada correctamente.')
         {
           <p *ngIf="mensajeLogin" class="text-danger mt-2 text-center">{{ mensajeLogin() }}</p>
@@ -35,9 +41,14 @@
         {
           <p *ngIf="mensajeLogin" class="text-success mt-2 text-center">{{ mensajeLogin() }}</p>
         }
+
+        <div class="d-flex flex-column gap-2 mt-4">
+          <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario1')">Usuario 1</button>
+          <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario2')">Usuario 2</button>
+          <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario3')">Usuario 3</button>
+        </div>
       </form>
     }
   </div>
-  <br>
-  <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+  <br><button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
 </div>

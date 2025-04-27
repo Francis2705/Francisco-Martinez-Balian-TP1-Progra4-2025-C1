@@ -17,35 +17,39 @@ export class LoginComponent implements OnInit
   auth = inject(AuthService);
   db = inject(DatabaseService);
   mensajeLogin = signal<any | null>(null);
+  mostrarClave: boolean = false;
 
-  // constructor() //hace que no pueda acceder si ya esta logueado
-  // {
-  //   this.auth.supabase.auth.onAuthStateChange((event, session) => {
-  //     if (session !== null)
-  //     {
-  //       this.auth.supabase.auth.getUser().then(({data, error}) => {
-  //         console.log("Sesión activa", data); //se ejecuta dos veces cuando la sesion esta activa
-  //         this.auth.user.set(data.user);
-  //         this.auth.router.navigateByUrl('/'); //si hay sesion activa, redirige a bienvenida
-  //       }); 
-  //     }
-  //   });
-  // }
   ngOnInit()
   {
     this.formulario = new FormGroup({
-      correo: new FormControl('', {validators: [Validators.required, Validators.email]}),
-      clave: new FormControl('', {validators: [Validators.required, Validators.minLength(6)]})
+      correo: new FormControl('', {validators: [Validators.required, Validators.email, Validators.maxLength(50)]}),
+      clave: new FormControl('', {validators: [Validators.required, Validators.minLength(6), Validators.maxLength(20)]})
     });
   }
+
   async login()
   {
     const resultado = await this.auth.iniciarSesion(this.correo?.value, this.clave?.value);
     this.mensajeLogin.set(resultado);
     if (this.mensajeLogin() === 'Sesión iniciada correctamente.')
     {
-      this.auth.router.navigateByUrl('/bienvenida');
+      setTimeout(() => {
+        this.auth.router.navigateByUrl('/bienvenida');
+      }, 1000);
     }
+  }
+
+  loginRapido(usuario: string)
+  {
+    this.formulario?.setValue({
+      correo: usuario + '@gmail.com',
+      clave: 'hola1234'
+    });
+  }
+
+  verClave()
+  {
+    this.mostrarClave = !this.mostrarClave;
   }
 
   get correo() {return this.formulario?.get('correo');}
