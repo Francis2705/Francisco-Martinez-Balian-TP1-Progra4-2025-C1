@@ -62,10 +62,10 @@ a:hover
 {
     text-decoration: underline !important;
 }
-@media (max-width: 768px)
+@media (max-width: 468px)
 {
     .boton-clave
     {
-        right: -250px;
+        right: -300px;
     }
 }
