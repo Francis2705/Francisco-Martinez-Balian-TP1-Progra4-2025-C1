@@ -48,16 +48,17 @@ input.form-control
 {
     font-size: 15px;
 }
-.login-footer {
-  font-size: 14px;
-  color: #6c757d; /* Color de texto apagado */
+.login-footer
+{
+    font-size: 14px;
+    color: #6c757d;
 }
-
-.login-footer a {
-  color: #0dcaf0; /* Color de enlace */
-  text-decoration: none;
+.login-footer a
+{
+    color: #0dcaf0;
+    text-decoration: none;
 }
 a:hover
 {
-  text-decoration: underline !important; /* Subraya el enlace cuando pasa el ratón */
+    text-decoration: underline !important;
 }

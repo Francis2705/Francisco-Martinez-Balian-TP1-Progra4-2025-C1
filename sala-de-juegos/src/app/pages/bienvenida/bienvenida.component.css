@@ -1,11 +1,50 @@
+@keyframes aparecer
+{
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes caerDelCielo
+{
+  0%
+  {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  80%
+  {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bienvenida-container
+{
+  background-color: #1b2838;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .text-grow
 {
   display: inline-block;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   font-family: 'Press Start 2P', cursive;
-  font-size: 2.1rem;
+  font-size: 2.3rem;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  color: #0dcaf0;
+}
+.text-grow:hover
+{
+  transform: scale(0.97);
 }
 .pixel-title
 {
@@ -16,36 +55,121 @@
 }
 .steam-title
 {
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 8px rgba(23, 162, 184, 0.5);
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 12px rgba(23, 162, 184, 0.7);
+  font-size: 2.8rem;
+  animation: aparecer 1s ease-out forwards;
 }
 .game-card
 {
-  background-color: #1b2838;
+  background-color: #1b2838 !important;
+  padding: 1.5rem;
+  color: white;
   border: 1px solid #17a2b8;
   border-radius: 1rem;
-  color: #fff;
   box-shadow: 0 0 20px rgba(23, 162, 184, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  animation: caerDelCielo 0.8s ease-out forwards;
+  opacity: 0;
 }
 .game-card:hover
 {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(23, 162, 184, 0.5);
+  transform: scale(1.07);
+  box-shadow: 0 0 40px rgba(23, 162, 184, 0.7);
+}
+.card-delay-1
+{
+  animation-delay: 0.2s;
+}
+.card-delay-2
+{
+  animation-delay: 0.4s;
+}
+.card-delay-3
+{
+  animation-delay: 0.6s;
+}
+.card-delay-4
+{
+  animation-delay: 0.8s;
+}
+.card-delay-5
+{
+  animation-delay: 1.0s;
+}
+.card-delay-6
+{
+  animation-delay: 1.2s;
+}
+.card-delay-7
+{
+  animation-delay: 1.4s;
 }
 .icono-juego
 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #17a2b8;
+}
+.efecto-caer
+{
+  animation: caerDelCielo 0.8s ease-out forwards;
+  opacity: 0;
+}
+.efecto-delay-1
+{
+  animation-delay: 0.2s;
+}
+.efecto-delay-2
+{
+  animation-delay: 0.4s;
+}
+.efecto-delay-3
+{
+  animation-delay: 0.6s;
+}
+.efecto-delay-4
+{
+  animation-delay: 0.8s;
+}
+.steam-btn
+{
+  background: linear-gradient(145deg, #17a2b8, #138496);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.steam-btn:hover
+{
+  background: linear-gradient(145deg, #138496, #117a8b);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(13, 202, 240, 0.6);
+}
+.steam-btn.btn-danger
+{
+  background: linear-gradient(145deg, #dc3545, #c82333);
 }
 .steam-btn.btn-danger:hover
 {
-  background-color: #7b1f1f !important;
-  border-color: #7b1f1f !important;
+  background: linear-gradient(145deg, #c82333, #bd2130);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
 }
 .btn-info:hover
 {
   background-color: #0dcaf0cc;
   border-color: #0dcaf0;
+}
+
+@media (max-width: 768px)
+{
+  .steam-title
+  {
+    font-size: 1.8rem;
+  }
+  .text-grow
+  {
+    font-size: 1.5rem;
+  }
 }

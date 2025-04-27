@@ -1,3 +1,16 @@
+@keyframes caerDelCielo
+{
+    0%
+    {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%
+    {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 .sobre-mi-container
 {
     min-height: 100vh;
@@ -11,6 +24,17 @@
     background-color: #1b2838 !important;
     padding: 1.5rem;
     color: white;
+    border: 1px solid #17a2b8;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(23, 162, 184, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    animation: caerDelCielo 0.8s ease-out;
+}
+.card:hover
+{
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(23, 162, 184, 0.5);
 }
 .card img
 {
