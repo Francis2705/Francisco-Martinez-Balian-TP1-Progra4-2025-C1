@@ -1,43 +1,44 @@
-.chat-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-  }
-  
-  .message {
-    background-color: #2a2a2a;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-  }
-  
-  .message-own {
-    background-color: #4d4d4d;
-    text-align: right;
-  }
-  
-  .message-other {
-    background-color: #333;
-  }
-  
-  .message-info {
-    font-size: 0.9rem;
-    color: #aaa;
-  }
-  
-  input.form-control {
-    margin-right: 10px;
-  }
-  
-  input.form-control, button {
-    border-radius: 3px;
-  }
-  .input-group
-  {
-    width: 50%;
-  }
-  .btn-info:hover
-  {
-    background-color: #0dcaf0cc;
-    border-color: #0dcaf0;
-  }
+.chat-container
+{
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+.message
+{
+  background-color: #2a2a2a;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.message-own
+{
+  background-color: #4d4d4d;
+  text-align: right;
+}
+.message-other
+{
+  background-color: #333;
+}
+.message-info
+{
+  font-size: 0.9rem;
+  color: #aaa;
+}
+input.form-control
+{
+  margin-right: 10px;
+}
+input.form-control, button
+{
+  border-radius: 3px;
+}
+.input-group
+{
+  width: 50%;
+}
+.btn-info:hover
+{
+  background-color: #0dcaf0cc;
+  border-color: #0dcaf0;
+}

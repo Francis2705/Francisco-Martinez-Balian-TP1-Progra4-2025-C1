@@ -1,23 +1,24 @@
 <div class="steam-card p-4 text-light text-center shadow-lg d-flex flex-column justify-content-center align-items-center vh-100 bg-dark">
-    <h2 class="mb-4 steam-font display-6 text-info">Sala de Chat</h2>
-    
-    <div class="chat-container mb-4">
-      <div *ngFor="let mensaje of mensajes()">
-        <div [ngClass]="{'message-own': mensaje.usuario === usuarioActual?.email, 'message-other': mensaje.usuario !== usuarioActual?.email}" class="message">
-          <div class="message-info">
-            <strong>{{ mensaje.usuario }}</strong> <span>{{ mensaje.fecha }}</span>
-          </div>
-          <p>{{ mensaje.contenido }}</p>
+  <h2 class="mb-4 steam-font display-6 text-info">Sala de Chat</h2>
+  <div class="chat-container mb-4">
+    <div *ngFor="let mensaje of mensajes()">
+      <div [ngClass]="{'message-own': mensaje.usuario === usuarioActual?.email, 'message-other': mensaje.usuario !== usuarioActual?.email}" class="message">
+        <div class="message-info">
+          @if (usuarioClase !== null)
+          {
+            <strong>{{ nombreUsuario() }}</strong> <span>{{ mensaje.fecha }}</span>
+          }
         </div>
+        <p>{{ mensaje.contenido }}</p>
       </div>
     </div>
-  
-    <div class="input-group">
-      <input type="text" [(ngModel)]="nuevoMensaje" class="form-control" placeholder="Escribe un mensaje..." (keydown.enter)="enviarMensaje()">
-      <button class="btn btn-outline-light" (click)="enviarMensaje()">Enviar</button>
-    </div>
-    <div class="mt-5">
-        <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
-    </div>
   </div>
-  
+
+  <div class="input-group">
+    <input type="text" [(ngModel)]="nuevoMensaje" class="form-control" placeholder="Escribe un mensaje..." (keydown.enter)="enviarMensaje()">
+    <button class="btn btn-outline-light" (click)="enviarMensaje()">Enviar</button>
+  </div>
+  <div class="mt-5">
+    <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+  </div>
+</div>
