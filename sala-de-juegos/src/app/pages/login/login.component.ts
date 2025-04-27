@@ -2,12 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
-import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, ReactiveFormsModule, NgIf, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit
   formulario?: FormGroup;
   auth = inject(AuthService);
   db = inject(DatabaseService);
-  mensajeLogin = signal<any | null>(null);
+  mensajeLogin = signal<any | null>(null); //si no esta como signal, no carga el texto de error o exito (en registro pasa lo mismo)
   mostrarClave: boolean = false;
 
   ngOnInit()

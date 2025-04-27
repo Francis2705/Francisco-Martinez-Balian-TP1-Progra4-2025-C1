@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit
   usuario?: Usuario;
   auth = inject(AuthService);
   db = inject(DatabaseService);
-  registro = signal<any | null>(null);
+  registro = signal<any | null>(null); //si no esta como signal, no carga el texto de error o exito (en login pasa lo mismo)
   mensajeLogin = signal<any | null>(null);
   mostrarClave: boolean = false;
 

@@ -35,18 +35,18 @@
 
         @if (mensajeLogin() != 'Sesión iniciada correctamente.')
         {
-          <p *ngIf="mensajeLogin" class="text-danger mt-2 text-center">{{ mensajeLogin() }}</p>
+          <p class="text-danger mt-2 text-center">{{ mensajeLogin() }}</p>
         }
         @else
         {
-          <p *ngIf="mensajeLogin" class="text-success mt-2 text-center">{{ mensajeLogin() }}</p>
+          <p class="text-success mt-2 text-center">{{ mensajeLogin() }}</p>
         }
 
-        <!-- <div class="d-flex flex-column gap-2 mt-4">
+        <div class="d-flex flex-column gap-2 mt-4">
           <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario1')">Usuario 1</button>
           <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario2')">Usuario 2</button>
           <button type="button" class="btn btn-outline-info" (click)="loginRapido('usuario3')">Usuario 3</button>
-        </div> -->
+        </div>
 
         <div class="text-center mt-3">
           <p class="text" style="font-size: 14px;">¿No tienes una cuenta? 

@@ -1,3 +1,24 @@
+.sobre-mi-container
+{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #1b2838;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.card
+{
+    background-color: #1b2838 !important;
+    padding: 1.5rem;
+    color: white;
+}
+.card img
+{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
 .btn-info:hover
 {
     background-color: #0dcaf0cc;
