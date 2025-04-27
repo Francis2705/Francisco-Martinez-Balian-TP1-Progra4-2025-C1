@@ -1,8 +1,10 @@
 <div class="contenedor-principal d-flex flex-column justify-content-center align-items-center bg-dark text-white p-4">
-    <h1 class="titulo text-center text-info mb-4">Reglas de los Juegos</h1>
+  <h1 class="titulo text-center text-info mb-4">Reglas de los Juegos</h1>
 
-    <!-- Reglas de Ahorcado -->
-    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+  <!-- Nuevo contenedor flex para las secciones -->
+  <div class="contenedor-reglas d-flex flex-wrap justify-content-center gap-4">
+    <!-- Sección de Ahorcado -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light">
       <h2 class="subtitulo text-info mb-3">Ahorcado</h2>
       <p class="descripcion-reglas">
         En el juego del Ahorcado, el objetivo es adivinar la palabra oculta. 
@@ -13,8 +15,8 @@
       </p>
     </section>
 
-    <!-- Reglas de Mayor o Menor -->
-    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+    <!-- Sección de Mayor o Menor -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light">
       <h2 class="subtitulo text-info mb-3">Mayor o Menor</h2>
       <p class="descripcion-reglas">
         En este juego, se muestra una carta de una baraja. Debes adivinar si la siguiente carta será <strong>mayor o menor</strong> que la que está visible en pantalla.
@@ -24,8 +26,8 @@
       </p>
     </section>
 
-    <!-- Reglas de Preguntados -->
-    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+    <!-- Sección de Preguntados -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light">
       <h2 class="subtitulo text-info mb-3">Preguntados</h2>
       <p class="descripcion-reglas">
         En Preguntados, se te presenta una pregunta con varias opciones. Debes seleccionar la opción correcta.
@@ -35,8 +37,8 @@
       </p>
     </section>
 
-    <!-- Reglas de Dados Locos -->
-    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light mb-4" style="background-color: #1b2838;">
+    <!-- Sección de Dados Locos -->
+    <section class="seccion-reglas card p-4 shadow-lg bg-body-secondary border border-info-subtle text-light">
       <h2 class="subtitulo text-info mb-3">Dados Locos</h2>
       <p class="descripcion-reglas">
         En este juego, deberás tirar dos dados hasta que salga el resultado de <strong>dos seis</strong> para ganar.
@@ -45,8 +47,9 @@
         Si en algún momento la suma de los dados es <strong>menor a 4</strong>, perderás. Si la suma es otra, ¡sigue tirando hasta lograr el objetivo!
       </p>
     </section>
+  </div>
 
-    <div class="d-flex justify-content-center my-4">
-      <button routerLink="/bienvenida" class="btn btn-steam">Volver</button>
-    </div>
+  <div class="col-12 mt-4 d-flex justify-content-center">
+    <button routerLink="/bienvenida" class="btn btn-info px-4 py-2 shadow-lg rounded-pill">Volver</button>
+</div>
 </div>

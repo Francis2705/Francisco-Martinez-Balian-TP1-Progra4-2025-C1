@@ -1,5 +1,5 @@
-import { Component, inject, OnInit, signal, effect } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject, signal, effect } from '@angular/core';
+import { RouterLink} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Usuario } from '../../classes/Usuario';
 import { DatabaseService } from '../../services/database.service';
@@ -29,7 +29,8 @@ export class BienvenidaComponent
 
   constructor()
   {
-    effect(() => { //sin el effect, this.auth.user() me trae null
+    //uso effect porque al principio el user es null, y effect espera y detecta cuando el usuario se carga
+    effect(() => {
       if (this.auth.user())
       {
         console.log("Usuario cargado:", this.auth.user());
