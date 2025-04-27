@@ -62,11 +62,3 @@ a:hover
 {
     text-decoration: underline !important;
 }
-
-@media (max-width: 768px)
-{
-    .boton-clave
-    {
-        display: inline-block;
-    }
-}

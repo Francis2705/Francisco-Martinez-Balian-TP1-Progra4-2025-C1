@@ -19,11 +19,12 @@
 
         <div class="mb-4 position-relative"> <!-- Clave con boton para ocultar -->
           <input [type]="mostrarClave ? 'text' : 'password'" formControlName="clave" class="form-control" placeholder="Contraseña" />
-          <button type="button" (click)="verClave()" class="boton-clave">cewcewfewfwf</button>
+          <button type="button" (click)="verClave()" class="boton-clave">{{ mostrarClave ? '🙈' : '🙉' }}</button>
 
           @if(clave?.errors !== null && clave?.touched)
           {
             <div class="text-danger small mt-1">
+              <button type="button" (click)="verClave()" class="boton-clave">{{ mostrarClave ? '🙈' : '🙉' }}</button>
               @if(clave?.hasError('required')) { <p class="error-clave">La clave es requerida</p> }
               @if(clave?.hasError('minlength')) { <p class="error-clave">Mínimo 6 caracteres</p> }
               @if(clave?.hasError('maxlength')) { <p class="error-clave">Máximo 20 caracteres</p> }
