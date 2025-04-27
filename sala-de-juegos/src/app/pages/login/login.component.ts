@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit
 
   async login()
   {
+    if (!this.formulario?.valid)
+    {
+      return this.mensajeLogin.set('Error, formulario inválido');
+    }
     const resultado = await this.auth.iniciarSesion(this.correo?.value, this.clave?.value);
     this.mensajeLogin.set(resultado);
     if (this.mensajeLogin() === 'Sesión iniciada correctamente.')
