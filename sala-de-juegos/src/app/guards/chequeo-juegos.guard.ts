@@ -12,8 +12,5 @@ export const chequeoJuegosGuard: CanActivateFn = async () => {
   {
     return authService.router.parseUrl('/bienvenida');
   }
-  else //hay sesion activa asi que dejo pasar
-  {
-    return true;
-  }
+  return true; //hay sesion activa asi que dejo pasar
 };

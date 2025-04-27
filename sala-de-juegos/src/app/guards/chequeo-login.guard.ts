@@ -12,8 +12,5 @@ export const chequeoLoginGuard: CanActivateFn = async () => {
   {
     return true;
   }
-  else //hay sesion activa asi que redirijo a bienvenida
-  {
-    return authService.router.parseUrl('/bienvenida');
-  }
+  return authService.router.parseUrl('/bienvenida'); //hay sesion activa asi que redirijo a bienvenida
 };

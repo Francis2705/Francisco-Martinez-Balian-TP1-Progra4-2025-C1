@@ -1,10 +1,11 @@
 export class Usuario
 {
-    uid: any;
     correo: string;
     nombre: string;
     apellido: string;
     edad: number;
+    uid: any;
+
     constructor(correo: string, nombre: string, apellido: string, edad: number, uid: any)
     {
         this.correo = correo;
@@ -12,9 +13,5 @@ export class Usuario
         this.apellido = apellido;
         this.edad = edad;
         this.uid = uid;
-    }
-    mostrarDatos()
-    {
-        return `${this.uid, this.correo, this.nombre, this.apellido, this.edad}`;
     }
 }
