@@ -21,13 +21,10 @@ export class AuthService
         this.user.set(null);
         return;
       }
-      else
-      {
-        this.supabase.auth.getUser().then(({data, error}) => {
-          console.log("Sesión activa", data);
-          this.user.set(data.user);
-        });
-      }
+      this.supabase.auth.getUser().then(({data, error}) => {
+        console.log("Sesión activa", data);
+        this.user.set(data.user);
+      });
     });
   }
 
@@ -46,25 +43,14 @@ export class AuthService
 
   async iniciarSesion(email: string, password: string): Promise<string>
   {
-    //verifica si ya hay una sesión activa
-    const { data: sessionData } = await this.supabase.auth.getSession();
-    if (sessionData.session)
-    {
-      return "Ya hay una sesión iniciada.";
-    }
-
-    //verifica si el correo está registrado en la tabla de usuarios
     const { data: usuarios, error: errorUsuario } = await this.supabase.from("Usuarios").select("correo").eq("correo", email);
-
-    if (!usuarios || usuarios.length === 0)
+    if (!usuarios || usuarios.length === 0) //verifica si el correo esta registrado en la tabla de usuarios
     {
       return "El correo ingresado no está registrado.";
     }
 
-    //si el correo existe, intentar iniciar sesión
     const { data, error } = await this.supabase.auth.signInWithPassword({email: email, password: password});
-
-    if(error?.message === 'Invalid login credentials')
+    if(error?.message === 'Invalid login credentials') //si el correo existe, intentar iniciar sesion
     {
       return "Error, contraseña incorrecta";
     }

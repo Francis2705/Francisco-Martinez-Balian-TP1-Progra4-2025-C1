@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class DatabaseService
 {
-  supabase = inject(SupabaseService).client;
+  supabase = inject(SupabaseService).client; //del servicio de supabase, me traigo el cliente que es por el cual voy a hacer las peticiones
   canal: RealtimeChannel;
   tablaUsuarios: PostgrestQueryBuilder<any, any, "Usuarios", unknown>;
 
@@ -25,21 +25,6 @@ export class DatabaseService
     const { data, error } = await this.tablaUsuarios.insert(usuarios);
   }
 
-  async listarUsuarios(): Promise<Usuario[] | []>
-  {
-    const {data, error} = await this.tablaUsuarios.select("uid, correo, nombre, apellido, edad");
-    console.log(data);
-
-    if(error)
-    {
-      return [];
-    }
-
-    return data as Usuario[];
-  }
-
-//chat
-
   async obtenerMensajes()
   {
     const { data, error } = await this.supabase.from('Mensajes').select();
@@ -49,36 +34,31 @@ export class DatabaseService
   async guardarMensaje(mensaje: any)
   {
     const { data, error } = await this.supabase.from('Mensajes').insert([mensaje]);
-    console.log(error);
     return data;
   }
 
-  suscribirAEventosMensajes(): Observable<any> {
-    return new Observable(observer => {
-      const channel = this.supabase.channel('chat-messages');
-
-      channel
-        .on(
+  suscribirAEventosMensajes(): Observable<any>
+  {
+    return new Observable(observable => { //crea un obervable y observable es quien se encarga de avisar cuando lleguen nuevos datos
+      const canalMensajes = this.supabase.channel('chat');
+      canalMensajes.on( //se configura el canal para reaccionar cuando haya cambios en la bd
           'postgres_changes',
           {
             event: 'INSERT',
             schema: 'public',
             table: 'Mensajes',
           },
-          (payload) => {
-            observer.next(payload.new);
-          }
-        )
-        .subscribe();
+          (payload) => { //aca adentro se configura q hacer cada vez que hay un nuevo mensaje en la bd
+            observable.next(payload.new); //observable.next envia el mensaje a quien este suscripto
+          } //payload.new es el nuevo mensaje que se registro
+        ).subscribe();
 
-      // Limpieza al destruir el observable
-      return () => {
-        this.supabase.removeChannel(channel);
+      return () => { //es una funcion de limpieza que se ejecuta cuando ya no se quiere escuchar mas el evento
+        this.supabase.removeChannel(canalMensajes); //le dice a supabase que ya no quiere seguir escuchando este canal
       };
     });
   }
 
-  //Resultados
   async obtenerResultados(tabla: string): Promise<any[]>
   {
     const {data, error} = await this.supabase.from(tabla).select("*").order('gano', {ascending: false}).order('duracion', {ascending: true});
