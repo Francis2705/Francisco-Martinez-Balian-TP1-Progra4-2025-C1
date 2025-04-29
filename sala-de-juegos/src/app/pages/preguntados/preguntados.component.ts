@@ -34,18 +34,18 @@ export class PreguntadosComponent implements OnInit
     this.cargarPreguntas();
   }
 
-  cargarPreguntas(): void
+  cargarPreguntas()
   {
-    this.http.get<any[]>('https://the-trivia-api.com/api/questions?limit=5&difficulty=easy').subscribe(res => {
-      this.preguntas = res.map(p => ({
-        question: this.decodeHtml(p.question),
-        correct_answer: this.decodeHtml(p.correctAnswer),
-        respuestas: this.shuffle([
-          this.decodeHtml(p.correctAnswer),
-          ...p.incorrectAnswers.map((r: string) => this.decodeHtml(r))
+    this.http.get<any[]>('https://the-trivia-api.com/api/questions?limit=5&difficulty=easy').subscribe(async res => {
+
+      this.preguntas = res.map(p => ({ //para cada opcion del array...
+        question: this.decodearHtml(p.question), //decodea la pregunta
+        correct_answer: this.decodearHtml(p.correctAnswer), //decodea la respuesta
+        respuestas: this.desordenarArray([ //junto la respuesta correcta con las incorrectas y las mezclo para que salgan en distinto orden 
+          this.decodearHtml(p.correctAnswer),
+          ...p.incorrectAnswers.map((r: string) => this.decodearHtml(r))
         ])
       }));
-      // console.log('Preguntas cargadas:', this.preguntas);
       this.cdr.detectChanges();
     });
     this.tiempoInicio = Date.now();
@@ -55,9 +55,9 @@ export class PreguntadosComponent implements OnInit
   responder(opcion: string): void
   {
     if (this.juegoFinalizado) return;
-  
+
     const actual = this.preguntas[this.indice];
-  
+
     if (opcion === actual.correct_answer)
     {
       this.aciertos++;
@@ -103,13 +103,14 @@ export class PreguntadosComponent implements OnInit
     clearInterval(this.intervalo);
   }
 
-  shuffle(array: string[]): string[]
+  desordenarArray(array: string[]): string[]
   {
-    return array.sort(() => Math.random() - 0.5);
+    return array.sort(() => Math.random() - 0.5); //desordena el array al azar
   }
 
-  decodeHtml(html: string): string
+  decodearHtml(html: string): string
   {
+    //decodea lo que llega -> decodeHtml('¿Cu&aacute;l es la capital de Francia?') => '¿Cuál es la capital de Francia?'
     const txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;

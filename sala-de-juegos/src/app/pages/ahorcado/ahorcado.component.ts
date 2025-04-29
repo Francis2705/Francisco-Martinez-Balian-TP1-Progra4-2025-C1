@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, inject, signal, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
@@ -22,7 +22,8 @@ export class AhorcadoComponent implements OnInit
   juegoFinalizado: boolean = false;
   gano: boolean = false;
   imagenActual: string = '';
-  palabras: string[] = ['ANGULAR', 'PROGRAMACION', 'JAVASCRIPT', 'DESARROLLO', 'COMPONENTE', 'ÑANDU'];
+  palabras: string[] = ['INDEPENDIENTE', 'PROGRAMACION', 'LIBERTADORES', 'DESARROLLO', 'COMPONENTE', 'SIETE', 'AMERICA', 'AVELLANEDA',
+                        'COMPUTADORA', 'INFORMATICA', 'PROFESIONAL', 'JUEGOS', 'UNIVERSIDAD', 'FACULTAD', 'ARGENTINA'];
   tiempoInicio: number = 0;
   tiempoTranscurrido: number = 0;
   tiempoFormateado: string = '00:00';
@@ -58,7 +59,7 @@ export class AhorcadoComponent implements OnInit
 
     if (this.palabra.includes(letra))
     {
-      this.palabra.split('').forEach((l, i) => {
+      this.palabra.split('').forEach((l, i) => { //se recorre la palabra letra por letra hasta encontrar la coincidencia
         if (l === letra)
         {
           this.palabraVisible[i] = letra;

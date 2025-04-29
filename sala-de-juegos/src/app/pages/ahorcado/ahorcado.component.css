@@ -1,6 +1,6 @@
-.ahorcado-container
+.ahorcado
 {
-  font-family: 'Press Start 2P', cursive;
+  font-size: 40px;
 }
 .letra-btn
 {
@@ -13,6 +13,7 @@
   transition: transform 0.2s ease, background-color 0.3s ease;
   border-radius: 8px;
   min-width: 45px;
+  font-family: 'Press Start 2P', cursive;
 }
 .letra-btn:hover:not(:disabled)
 {
@@ -54,6 +55,6 @@
 }
 .btn-info:hover
 {
-    background-color: #0dcaf0cc;
-    border-color: #0dcaf0;
+  background-color: #0dcaf0cc;
+  border-color: #0dcaf0;
 }
