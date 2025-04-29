@@ -41,8 +41,10 @@ export class MayorOMenorComponent implements OnInit
     const palos = ['corazones'];
     this.mazo = [];
 
-    for (let valor = 1; valor <= 12; valor++) {
-      for (let palo of palos) {
+    for (let valor = 1; valor <= 12; valor++)
+    {
+      for (let palo of palos)
+      {
         this.mazo.push({
           valor,
           palo,
@@ -51,7 +53,7 @@ export class MayorOMenorComponent implements OnInit
       }
     }
 
-    this.mazo = this.mazo.sort(() => Math.random() - 0.5); //barajar el mazo
+    this.mazo = this.mazo.sort(() => Math.random() - 0.5); //baraja el mazo
   }
 
   reiniciarJuego(): void
@@ -59,7 +61,7 @@ export class MayorOMenorComponent implements OnInit
     this.aciertos = 0;
     this.juegoFinalizado = false;
     this.gano = false;
-    this.cartaActual = this.mazo.shift() || null;
+    this.cartaActual = this.mazo.shift() || null; //saca la primer carta, q es la q se muestra cuando se empieza a jugar
     this.tiempoInicio = Date.now();
     this.iniciarTemporizador();
   }
@@ -68,7 +70,7 @@ export class MayorOMenorComponent implements OnInit
   {
     if (this.juegoFinalizado || this.mazo.length === 0) return;
 
-    this.cartaSiguiente = this.mazo.shift() || null;
+    this.cartaSiguiente = this.mazo.shift() || null; //recien cuando se toca para comparar, ahi se trae la carta siguiente
 
     if (!this.cartaActual || !this.cartaSiguiente) return;
 
@@ -131,7 +133,7 @@ export class MayorOMenorComponent implements OnInit
     this.intervalo = setInterval(() => {
       this.tiempoTranscurrido = Math.floor((Date.now() - this.tiempoInicio) / 1000);
       this.tiempoFormateado = this.formatearTiempo(this.tiempoTranscurrido);
-      this.cdr.detectChanges();
+      this.cdr.detectChanges(); //para que el tiempo se vaya actualizando
     }, 1000);
   }
 
