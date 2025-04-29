@@ -70,6 +70,7 @@ export class JuegoPropioComponent implements OnInit
         jugador: nombreJugador,
         fecha: new Date(),
         gano: this.gano,
+        tiradas: this.intentos,
         duracion: duracionSegundos
       };
 
