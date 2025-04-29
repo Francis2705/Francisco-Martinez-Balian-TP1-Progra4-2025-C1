@@ -18,13 +18,13 @@ export class BienvenidaComponent
   usuario?: Usuario | null;
   nombreUsuario = signal<any | null>(null);
   juegos = [
+    { nombre: 'Reglas', icono: 'fas fa-scroll', ruta: '/reglas' },
+    { nombre: 'Sala de Chat', icono: 'fas fa-comments', ruta: '/sala-de-chat' },
     { nombre: 'Ahorcado', icono: 'fas fa-skull-crossbones', ruta: '/ahorcado' },
     { nombre: 'Mayor o Menor', icono: 'fas fa-sort-numeric-up-alt', ruta: '/mayor-o-menor' },
-    { nombre: 'Sala de Chat', icono: 'fas fa-comments', ruta: '/sala-de-chat' },
     { nombre: 'Preguntados', icono: 'fas fa-question', ruta: '/preguntados' },
     { nombre: 'Dados Locos', icono: 'fas fa-dice', ruta: '/juego-propio' },
     { nombre: 'Resultados', icono: 'fas fa-trophy', ruta: '/resultados' },
-    { nombre: 'Reglas', icono: 'fas fa-scroll', ruta: '/reglas' }
   ];
 
   constructor()

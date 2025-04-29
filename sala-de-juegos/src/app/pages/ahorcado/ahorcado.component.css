@@ -58,45 +58,48 @@
   background-color: #0dcaf0cc;
   border-color: #0dcaf0;
 }
-html, body {
+html, body
+{
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden; /* Evita scroll horizontal */
+  overflow-x: hidden;
 }
-
-.ahorcado-container {
+.ahorcado-container
+{
   max-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-.letras-grid {
+.letras-grid
+{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
   gap: 6px;
   width: 100%;
   margin: 0 auto;
 }
-
-.letras-wrapper {
+.letras-wrapper
+{
   max-width: 600px;
   width: 100%;
 }
 
-@media (max-width: 576px) {
-  .letra-btn {
+@media (max-width: 576px)
+{
+  .letra-btn
+  {
     font-size: 0.8rem;
     padding: 0.4rem 0.6rem;
     min-width: 38px;
   }
-
-  .ahorcado-img {
+  .ahorcado-img
+  {
     width: 150px;
     max-height: 120px;
   }
-
-  .timer {
+  .timer
+  {
     font-size: 0.75rem;
     padding: 6px 14px;
   }
