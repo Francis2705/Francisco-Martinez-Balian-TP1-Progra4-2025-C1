@@ -22,7 +22,7 @@ export class AuthService
         return;
       }
       this.supabase.auth.getUser().then(({data, error}) => {
-        console.log("Sesión activa", data);
+        // console.log("Sesión activa", data);
         this.user.set(data.user);
       });
     });

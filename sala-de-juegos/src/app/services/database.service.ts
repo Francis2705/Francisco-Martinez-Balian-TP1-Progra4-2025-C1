@@ -51,7 +51,7 @@ export class DatabaseService
           (payload) => { //aca adentro se configura q hacer cada vez que hay un nuevo mensaje en la bd
             observable.next(payload.new); //observable.next envia el mensaje a quien este suscripto
           } //payload.new es el nuevo mensaje que se registro
-        ).subscribe();
+        ).subscribe(); //este subscribe es para suscribirme a canal de supabase, conecta el observable con supabase (para cambios en la bd)
 
       return () => { //es una funcion de limpieza que se ejecuta cuando ya no se quiere escuchar mas el evento
         this.supabase.removeChannel(canalMensajes); //le dice a supabase que ya no quiere seguir escuchando este canal

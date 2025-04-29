@@ -19,7 +19,6 @@ export class SalaDeChatComponent
   nuevoMensaje: string = '';
   usuarioActual?: any;
   usuarioClase?: any;
-  nombreUsuario = signal<any[]>([]);
 
   ngOnInit()
   {
@@ -27,6 +26,7 @@ export class SalaDeChatComponent
       this.mensajes.set(mensajes);
     });
 
+    //me suscribo al observable para escuchar y detectar cuando haya cambios (y si los hay, actualizo)
     this.db.suscribirAEventosMensajes().subscribe((mensajeNuevo : any) => {
       this.mensajes.update(mensajes => [...mensajes, mensajeNuevo]);
     });
@@ -42,7 +42,6 @@ export class SalaDeChatComponent
     if (data)
     {
       this.usuarioClase = data;
-      this.nombreUsuario.set(this.usuarioClase?.nombre);
     }
     else
     {
@@ -58,6 +57,7 @@ export class SalaDeChatComponent
         usuario: this.usuarioActual?.email,
         contenido: this.nuevoMensaje,
         fecha: new Date(),
+        nombre: this.usuarioClase.nombre
       };
 
       await this.db.guardarMensaje(mensaje).then(() => {
@@ -71,4 +71,31 @@ export class SalaDeChatComponent
       });
     }, 1000);
   }
+
+  convertirAFechaArgentina(fechaUtc: string | Date): string
+  {
+    const fecha = new Date(fechaUtc);
+    fecha.setHours(fecha.getHours() - 3);
+
+    return fecha.toLocaleString("es-AR", {
+      timeZone: "America/Argentina/Buenos_Aires",
+      hour12: false,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  colorPorNombre(nombre: string): string {
+    let hash = 0;
+    for (let i = 0; i < nombre.length; i++) {
+      hash = nombre.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    // Convertir el hash a un color HSL bonito
+    const hue = Math.abs(hash) % 360; // Valor entre 0 y 359
+    return `hsl(${hue}, 70%, 70%)`; // Matiz variable, saturación 70%, luminosidad 70%
+  }
+  
 }
