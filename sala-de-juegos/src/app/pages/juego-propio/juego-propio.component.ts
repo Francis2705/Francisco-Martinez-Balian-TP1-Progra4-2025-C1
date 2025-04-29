@@ -27,12 +27,14 @@ export class JuegoPropioComponent implements OnInit
   tiempoFormateado: string = '00:00';
   intervalo: any = null;
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.tiempoInicio = Date.now();
     this.iniciarTemporizador();
   }
 
-  tirarDados() {
+  tirarDados()
+  {
     this.lanzando = true;
     this.resultado = '';
     this.intentos++;
@@ -45,7 +47,8 @@ export class JuegoPropioComponent implements OnInit
     }, 1000);
   }
 
-  getNumeroAleatorio(): number {
+  getNumeroAleatorio(): number
+  {
     return Math.floor(Math.random() * 6) + 1;
   }
 
@@ -110,7 +113,8 @@ export class JuegoPropioComponent implements OnInit
     this.cdr.detectChanges();
   }
 
-  getRutaDado(numero: number): string {
+  getRutaDado(numero: number): string
+  {
     return `https://hyrqyhaafqgfwofdhqzq.supabase.co/storage/v1/object/public/dados-locos/i-dados/dado${numero}.jpg`;
   }
 
