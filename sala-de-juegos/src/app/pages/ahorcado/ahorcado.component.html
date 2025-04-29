@@ -12,14 +12,16 @@
       <span *ngFor="let letra of palabraVisible" class="mx-1">{{ letra }}</span>
     </div>
     <!-- Botones del abecedario -->
-    <div class="letras-grid mb-3">
-      <button
-        *ngFor="let letra of abecedario"
-        class="btn letra-btn m-1"
-        [disabled]="letrasSeleccionadas.includes(letra)"
-        (click)="seleccionarLetra(letra)">
-        {{ letra }}
-      </button>
+    <div class="letras-wrapper w-100 overflow-hidden px-2">
+      <div class="letras-grid mb-3">
+        <button
+          *ngFor="let letra of abecedario"
+          class="btn letra-btn"
+          [disabled]="letrasSeleccionadas.includes(letra)"
+          (click)="seleccionarLetra(letra)">
+          {{ letra }}
+        </button>
+      </div>
     </div>
     <!-- Mensaje de resultado -->
     <div *ngIf="juegoFinalizado" class="mt-3">
