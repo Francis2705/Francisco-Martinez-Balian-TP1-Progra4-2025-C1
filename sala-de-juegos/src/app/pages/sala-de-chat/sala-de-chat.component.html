@@ -1,7 +1,7 @@
 <div class="steam-card p-4 text-light text-center shadow-lg d-flex flex-column justify-content-center align-items-center vh-100 bg-dark">
   <h2 class="mb-4 steam-font display-6 text-info">Sala de Chat</h2>
 
-  <div class="chat-container mb-4 w-50">
+  <div class="chat-container mb-4 w-70">
     <div *ngFor="let mensaje of mensajes()">
       <div class="d-flex mb-3" [ngClass]="{'flex-row-reverse': mensaje.usuario === usuarioActual?.email}">
         <div class="chat-avatar me-2 ms-2">
