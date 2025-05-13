@@ -12,11 +12,13 @@
             <div class="d-grid gap-2">
                 <button *ngFor="let r of preguntas[indice].respuestas" class="btn btn-outline-light" (click)="responder(r)">{{ r }}</button>
             </div>
-            <p class="mt-3 text-muted text-center">Correct answers: {{ aciertos }} / 6</p>
         </div>
+        <br>
+        <p class="text-light text-center">Correct answers: {{ aciertos }}</p>
         <div *ngIf="juegoFinalizado" class="text-center">
-            <p class="fs-4" [ngClass]="{ 'text-success': gano, 'text-danger': !gano }">{{ gano ? 'You win! 🎉' : 'You lose 😢' }}</p>
-            <p class="text-light">Correct answers: {{ aciertos }}</p>
+            <p class="fs-4" [ngClass]="{ 'text-success': gano, 'text-danger': !gano }">
+                {{ gano ? 'You win! 🎉' : 'You lose 😢, the correct answer was: ' + preguntas[indice].correct_answer}}
+            </p>
         </div>
     </div>
     <br>

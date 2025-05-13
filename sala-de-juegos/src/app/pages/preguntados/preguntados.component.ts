@@ -46,6 +46,7 @@ export class PreguntadosComponent implements OnInit
           ...p.incorrectAnswers.map((r: string) => this.decodearHtml(r))
         ])
       }));
+      console.log(this.preguntas);
       this.cdr.detectChanges();
     });
     this.tiempoInicio = Date.now();
