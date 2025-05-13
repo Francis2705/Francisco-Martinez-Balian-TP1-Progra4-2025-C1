@@ -10,7 +10,12 @@
                 {{ preguntas[indice].question }}
             </p>
             <div class="d-grid gap-2">
-                <button *ngFor="let r of preguntas[indice].respuestas" class="btn btn-outline-light" (click)="responder(r)">{{ r }}</button>
+                <button *ngFor="let r of preguntas[indice].respuestas" class="btn" [ngClass]="{
+                    'btn-outline-light': !respuestaSeleccionada,
+                    'btn-danger': respuestaSeleccionada === r && r !== preguntas[indice].correct_answer,
+                    'btn-success': respuestaSeleccionada === r && r === preguntas[indice].correct_answer}" [disabled]="respuestaSeleccionada"
+                    (click)="responder(r)">{{ r }}
+                </button>
             </div>
         </div>
         <br>

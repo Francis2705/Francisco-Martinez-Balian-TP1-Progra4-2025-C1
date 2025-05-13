@@ -55,9 +55,9 @@ export class JuegoPropioComponent implements OnInit
   async evaluarResultado()
   {
     const suma = this.dado1 + this.dado2;
-    if (this.dado1 === this.dado2 && this.dado1 === 6)
+    if (this.dado1 === this.dado2 && this.dado1 !== 1 && this.dado2 !== 1)
     {
-      this.resultado = '¡Ganaste con doble 6!';
+      this.resultado = '¡Ganaste con dados iguales!';
       this.lanzando = true;
       clearInterval(this.intervalo);
 
@@ -109,7 +109,9 @@ export class JuegoPropioComponent implements OnInit
     }
     else
     {
-      this.resultado = '¡Seguí intentando!';
+      setTimeout(() => {
+        this.resultado = '¡Seguí intentando!';
+      }, 50);
     }
     this.cdr.detectChanges();
   }

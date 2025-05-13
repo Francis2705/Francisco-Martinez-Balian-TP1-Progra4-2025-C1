@@ -28,6 +28,7 @@ export class PreguntadosComponent implements OnInit
   tiempoTranscurrido: number = 0;
   tiempoFormateado: string = '00:00';
   intervalo: any = null;
+  respuestaSeleccionada: string | null = null;
 
   ngOnInit(): void
   {
@@ -53,28 +54,33 @@ export class PreguntadosComponent implements OnInit
     this.iniciarTemporizador();
   }
 
-  responder(opcion: string): void
+  async responder(opcion: string)
   {
-    if (this.juegoFinalizado) return;
+    if (this.juegoFinalizado || this.respuestaSeleccionada) return;
 
+    this.respuestaSeleccionada = opcion;
     const actual = this.preguntas[this.indice];
+    const esCorrecta = opcion === actual.correct_answer;
 
-    if (opcion === actual.correct_answer)
-    {
-      this.aciertos++;
-      if (this.aciertos === 5)
+    setTimeout(async () => {
+      if (esCorrecta)
       {
-        this.finalizarJuego(true);
+        this.aciertos++;
+        if (this.aciertos === 5)
+        {
+          this.finalizarJuego(true);
+        }
+        else
+        {
+          this.indice++;
+          this.respuestaSeleccionada = null;
+        }
       }
       else
       {
-        this.indice++;
+        await this.finalizarJuego(false);
       }
-    }
-    else
-    {
-      this.finalizarJuego(false);
-    }
+    }, 400);
   }
 
   async finalizarJuego(gano: boolean)
@@ -102,6 +108,7 @@ export class PreguntadosComponent implements OnInit
     }
 
     clearInterval(this.intervalo);
+    this.cdr.detectChanges();
   }
 
   desordenarArray(array: string[]): string[]
